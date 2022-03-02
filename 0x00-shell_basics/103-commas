@@ -1,0 +1,13 @@
+#!/bin/bash
+files=$(ls -a | sort -V | awk 'BEGIN {FS=""} {gsub("\n",""); print}')
+
+final_output=""
+for file in $files; do
+  if [ -d $file ]; then
+    final_output="$final_output$file/, "
+  else
+    final_output="$final_output$file, "
+  fi
+done
+
+echo $final_output | sed -E 's/,\s*$//'
