@@ -1,0 +1,2 @@
+#!/bin/bash
+find . ! -path . -type d -exec chmod ugo+x {} \;
