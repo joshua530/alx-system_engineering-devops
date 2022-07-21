@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# displays files in current directory in list format
+files=$(ls .)
+for file in $files; do
+    echo "$file" | cut -d ' ' -f 9
+done
