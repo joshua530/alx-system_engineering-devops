@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Read and extract fields in password file
+PWD_FILE="/etc/passwd"
+while read -r LINE; do
+    echo "$LINE" | cut -d ":" -f1,3,6
+done < "$PWD_FILE"
