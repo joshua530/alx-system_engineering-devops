@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# runs a process that cannot be terminated by sending SIGTERM
+
+trap "echo 'I am invincible!!!'" SIGTERM
+
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done

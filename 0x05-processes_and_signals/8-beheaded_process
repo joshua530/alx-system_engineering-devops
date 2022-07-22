@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# successfully kills 7-highlander process
+# SIGKILL is sent instead of SIGTERM
+pkill -KILL -f '7-highlander'
