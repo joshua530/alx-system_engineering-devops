@@ -24,4 +24,4 @@ that are sent to them to perform certain tasks
 
 ## Usage
 1. clone the repository
-2. run the scripts using `./<script_name>` for executable scripts, else `bash <script_name>`
+2. run the scripts using `./<script_name>`
