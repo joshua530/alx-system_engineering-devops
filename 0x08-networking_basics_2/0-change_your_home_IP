@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# changes localhost and facebook.com ip addresses
+# without tmp file
+# HOSTS=$(cat /etc/hosts)
+# HOSTS="$HOSTS\n8.8.8.8\tfacebook.com" # add facebook.com
+# HOSTS=$(echo "$HOSTS" | sed -E 's/.+(\s+localhost)/127.0.0.2\1/') # change localhost
+# echo -e "$HOSTS" > /etc/hosts
+# for docker
+cp /etc/hosts tmp
+sed -i s/127.*$/127.0.0.2\\tlocalhost\\n8.8.8.8\\tfacebook.com/g hosts_tmp
+cp -f tmp /etc/hosts
