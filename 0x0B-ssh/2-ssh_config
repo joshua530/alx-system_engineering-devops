@@ -1,0 +1,5 @@
+# ssh configuration to allow connecting without using password and
+# refuse to connect using password
+Host 3.237.23.148
+	PasswordAuthentication no
+	IdentityFile ~/.ssh/school
