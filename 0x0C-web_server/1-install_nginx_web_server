@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# installs and makes nginx serve a page containing 'Hello World!'
+apt-get update
+apt-get -y install nginx
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+service nginx start

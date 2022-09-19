@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# installs and makes nginx serve a page containing 'Hello World!'
+apt-get update
+apt-get -y install nginx
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+
+ERROR_404_BLOCK="\\\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}\n\n"
+echo -e "Ceci n'est pas une page\n" > "/var/www/html/custom_404.html"
+
+REDIR_STR="\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n"
+# sed -i "47i $REDIR_STR" /etc/nginx/sites-available/default
+
+WHOLE_STR="$ERROR_404_BLOCK\n$REDIR_STR"
+
+sed -i "47i $WHOLE_STR" /etc/nginx/sites-available/default
+
+
+service nginx reload
