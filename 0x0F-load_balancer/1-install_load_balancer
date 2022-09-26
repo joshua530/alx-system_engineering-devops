@@ -63,4 +63,4 @@ ENABLED=1'
 
 echo "$DEFAULT" > /etc/default/haproxy
 echo "$CONF" > /etc/haproxy/haproxy.cfg
-service haproxy start
+service haproxy restart
