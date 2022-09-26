@@ -25,6 +25,7 @@ CONF=\
 defaults
 	log	global
 	mode	http
+	no option http-use-htx # don't convert header names to lowercase
 	option	httplog
 	option	dontlognull
         timeout connect 5000
