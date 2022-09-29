@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# looks up subdomain names
+domain="$1"
+subs=('www' 'lb-01' 'web-01' 'web-02')
+
+print_sub ()
+{
+	# printf "The subdomain %s is a " "$1"
+	out=$(dig "$1.$2" | grep -A1 'ANSWER SECTION' | tail -n1 | awk -F' ' '{ print $4 " record and points to " $5 }')
+	echo "The subdomain $1 is a $out"
+}	
+
+if [ -z "$2" ]; then
+	for sub in "${subs[@]}"; do
+		print_sub "$sub" "$domain"
+	done
+else
+	print_sub "$2" "$domain"
+fi
