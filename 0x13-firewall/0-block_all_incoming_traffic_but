@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# installs ufw and configures it to block all incoming traffic except for
+# ssh, ssl and http
+sudo apt-get -y install ufw
+sudo ufw allow ssh
+sudo ufw allow https
+sudo ufw allow http
+sudo ufw enable
