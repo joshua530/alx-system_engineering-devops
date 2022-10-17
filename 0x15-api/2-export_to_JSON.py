@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 '''exports employee data to json file'''
 import requests
 from sys import argv

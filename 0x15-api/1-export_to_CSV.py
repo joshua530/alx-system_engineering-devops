@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 '''exports employee data in csv format'''
 import requests
 from sys import argv

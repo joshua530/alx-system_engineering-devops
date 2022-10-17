@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 '''gathers employee data from api using id'''
 import requests
 from sys import argv
