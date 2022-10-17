@@ -30,7 +30,11 @@ def all_employee_data_json():
                 task = todo.get('title')
                 completed = todo.get('completed')
                 todo_l.append(
-                    {'username': username, 'task': task, 'completed': completed}
+                    {
+                        'username': username,
+                        'task': task,
+                        'completed': completed
+                    }
                 )
         data[str(user_id)] = todo_l
 
