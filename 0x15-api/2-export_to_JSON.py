@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 '''exports employee data to json file'''
+import json
 import requests
 from sys import argv
-import json
 
 
 def fetch_data(id):

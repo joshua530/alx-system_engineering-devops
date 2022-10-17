@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 '''exports employee data in csv format'''
+import csv
 import requests
 from sys import argv
-import csv
 
 
 def fetch_data(id):

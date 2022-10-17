@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 '''exports all employee data to json file'''
-import requests
-from sys import argv
 import json
+import requests
 
 
 def all_employee_data_json():
