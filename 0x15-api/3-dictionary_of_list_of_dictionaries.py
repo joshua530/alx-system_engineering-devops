@@ -6,7 +6,7 @@ import requests
 
 def all_employee_data_json():
     '''fetches all employee data converted to json'''
-    users = requests.get('https://jsonplaceholder.typicode.com/users')
+    users = requests.get('https://jsonplaceholder.typicode.com/users').json()
     todos = requests.get('https://jsonplaceholder.typicode.com/todos').json()
 
     # format:
@@ -26,11 +26,12 @@ def all_employee_data_json():
         username = user.get('username')
         todo_l = []
         for todo in todos:
-            task = todo.get('title')
-            completed = todo.get('completed')
-            todo_l.append(
-                {'username': username, 'task': task, 'completed': completed}
-            )
+            if todo.get('userId') == user_id:
+                task = todo.get('title')
+                completed = todo.get('completed')
+                todo_l.append(
+                    {'username': username, 'task': task, 'completed': completed}
+                )
         data[str(user_id)] = todo_l
 
     return data
