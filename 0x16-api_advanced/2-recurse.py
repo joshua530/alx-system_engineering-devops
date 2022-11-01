@@ -7,21 +7,24 @@ import requests
 def recurse(subreddit, hot_list=[], after=''):
     '''returns a list containing the titles of all hot articles
     for a given subreddit'''
-    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    if after != '':
-        url += '?after={}'.format(after)
     headers = requests.utils.default_headers()
-    headers.update({'User-Agent': 'Http Agent 1.1'})
-    res = requests.get(url, headers=headers, allow_redirects=False)
-    if res.status_code != 200:
-        return None
-    res = res.json()
-    articles = res.get('data', {}).get('children', None)
-    after = res.get('data').get('after')
-    if after is None:
-        return
-    for post in articles:
-        titles = [title for title in post.get('data').get('title')]
-    hot_list += titles
-    recurse(subreddit, hot_list, after)
-    return hot_list
+    headers.update({'User-Agent': 'My User Agent'})
+
+    # update url each recursive call with param "after"
+    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    if after != "tmp":
+        url = url + "?after={}".format(after)
+    r = requests.get(url, headers=headers, allow_redirects=False)
+
+    # append top titles to hot_list
+    results = r.json().get('data', {}).get('children', [])
+    if not results:
+        return hot_list
+    for e in results:
+        hot_list.append(e.get('data').get('title'))
+
+    # get next param "after" else nothing else to recurse
+    after = r.json().get('data').get('after')
+    if not after:
+        return hot_list
+    return (recurse(subreddit, hot_list, after))
