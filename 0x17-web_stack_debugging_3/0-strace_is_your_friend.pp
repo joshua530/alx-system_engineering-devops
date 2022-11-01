@@ -1,4 +1,6 @@
-exec {'sed -i s/class-wp-locale.phpp/class-wp-locale.php/g wp-settings.php':
+# Fixes typo error in wp configuration
+
+exec {'sed -i s/.phpp/.php/g wp-settings.php':
   cwd  => '/var/www/html/',
   path => ['/bin', '/usr/bin', '/usr/sbin']
 }
