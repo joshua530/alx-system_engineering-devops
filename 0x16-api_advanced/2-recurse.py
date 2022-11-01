@@ -15,6 +15,8 @@ def recurse(subreddit, hot_list=[], after=''):
     if after != "tmp":
         url = url + "?after={}".format(after)
     r = requests.get(url, headers=headers, allow_redirects=False)
+    if r.status_code != 200:
+        return None
 
     # append top titles to hot_list
     results = r.json().get('data', {}).get('children', [])
