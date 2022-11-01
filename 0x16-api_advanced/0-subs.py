@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 '''checks number of subscribers for a given subreddit'''
 import requests
 

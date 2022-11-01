@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 '''fetches top ten posts for a given subreddit'''
 import requests
 
