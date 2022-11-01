@@ -12,7 +12,10 @@ def recurse(subreddit, hot_list=[], after=''):
         url += '?after={}'.format(after)
     headers = requests.utils.default_headers()
     headers.update({'User-Agent': 'Http Agent 1.1'})
-    res = requests.get(url, headers=headers, allow_redirects=False).json()
+    res = requests.get(url, headers=headers, allow_redirects=False)
+    if res.status_code != 200:
+        return None
+    res = res.json()
     articles = res.get('data', {}).get('children', None)
     after = res.get('data').get('after')
     if after is None:
