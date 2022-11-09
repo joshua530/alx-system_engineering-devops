@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-python3 -m gunicorn --workers 3 --error-logfile /tmp/airbnb-error.log --access-logfile /tmp/airbnb-access.log --bind 0.0.0.0:5003 web_dynamic.2-hbnb.py:app
