@@ -5,9 +5,10 @@ server {
         index index.html index.htm index.nginx-debian.html;
         server_name _;
         location /airbnb-onepage/ {
-                proxy_pass http://localhost:5000/;
+                proxy_pass http://localhost:5000;
         }
         location /airbnb-dynamic/ {
+															include proxy_params;
                 proxy_pass http://localhost:5001/;
         }
         location / {
